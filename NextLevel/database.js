@@ -1,4 +1,4 @@
-// Este arquivo funciona como nosso banco de dados simulado.
+
 const gamesDB = [
     {
         id: 1,
@@ -44,5 +44,5 @@ const gamesDB = [
             { user: 'ZeldaFan', rating: 5, comment: 'Obra de arte, melhor jogo que já joguei!', likes: 25, dislikes: 0 }
         ]
     },
-    // Adicione mais jogos aqui se quiser
+    
 ];

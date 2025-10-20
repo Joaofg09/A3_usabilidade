@@ -1,5 +1,4 @@
 // Adicionamos um único 'ouvinte' que espera a página carregar completamente.
-// Todo o nosso código vai dentro dele para garantir que os elementos HTML já existam.
 document.addEventListener('DOMContentLoaded', () => {
 
     // =======================================================
@@ -503,28 +502,28 @@ if (finalizeButton) {
 // ===================================================================
 const gameTitleElement = document.getElementById('game-title');
 if (gameTitleElement) {
-    // 1. Pega o ID do jogo da URL
+    //  Pega o ID do jogo da URL
     const urlParams = new URLSearchParams(window.location.search);
     const gameId = parseInt(urlParams.get('id'));
 
-    // 2. Encontra o jogo no nosso "banco de dados"
+    //  Encontra o jogo no nosso "banco de dados"
     const gameData = gamesDB.find(game => game.id === gameId);
 
     if (gameData) {
-        // 3. Preenche a página com os dados do jogo
+        //  Preenche a página com os dados do jogo
         document.title = `${gameData.name} - NextLevel`; // Atualiza o título da aba
         gameTitleElement.textContent = gameData.name;
         document.getElementById('game-hero').style.backgroundImage = `url(${gameData.heroImage})`;
         document.getElementById('game-description').textContent = gameData.description;
         document.getElementById('game-price').textContent = `$${gameData.price.toFixed(2)}`;
 
-        // Preenche os requisitos de sistema
+    
         const minReqsList = document.getElementById('min-reqs');
         const recReqsList = document.getElementById('rec-reqs');
         minReqsList.innerHTML = Object.entries(gameData.system_reqs.min).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('');
         recReqsList.innerHTML = Object.entries(gameData.system_reqs.rec).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('');
 
-        // Preenche os detalhes (desenvolvedor, etc.)
+
         const detailsBox = document.getElementById('game-details');
         detailsBox.innerHTML = Object.entries(gameData.details).map(([key, value]) => `<p><strong>${key}:</strong> ${value}</p>`).join('');
 
@@ -546,7 +545,7 @@ if (gameTitleElement) {
             </div>
         `).join('');
 
-        // 4. Lógica do botão "Comprar" (Adicionar ao Carrinho)
+        //  Lógica do botão "Comprar" (Adicionar ao Carrinho)
         const addToCartButton = document.getElementById('add-to-cart-btn');
         addToCartButton.addEventListener('click', () => {
             let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
@@ -560,7 +559,7 @@ if (gameTitleElement) {
                     id: gameData.id,
                     nome: gameData.name,
                     preco: gameData.price,
-                    imagem: 'https://via.placeholder.com/100x50/888/FFFFFF?text=Game' // Imagem genérica para o carrinho
+                    imagem: 'https://via.placeholder.com/100x50/888/FFFFFF?text=Game' // Imagem para o carrinho
                 });
                 localStorage.setItem('shoppingCart', JSON.stringify(cart));
                 alert(`${gameData.name} foi adicionado ao carrinho!`);
