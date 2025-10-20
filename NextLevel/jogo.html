@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Jogo - NextLevel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="logo">Next<span>Level</span></a>
+            <div class="support">Suporte</div>
+            <div class="user-actions" id="user-section"></div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Mais vendidos</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar na loja">
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="game-hero" id="game-hero">
+            <h1 id="game-title">Nome do Jogo</h1>
+        </div>
+        <div class="game-content-layout">
+            <div class="game-main-content">
+                <h2>Descrição do Jogo</h2>
+                <p id="game-description">...</p>
+
+                <h2>Requisitos de Sistema</h2>
+                <div class="requirements-grid">
+                    <div>
+                        <h3>Mínimo</h3>
+                        <ul id="min-reqs"></ul>
+                    </div>
+                    <div>
+                        <h3>Recomendado</h3>
+                        <ul id="rec-reqs"></ul>
+                    </div>
+                </div>
+
+                <h2>Avaliar Jogo</h2>
+                <textarea class="review-textarea" placeholder="Escreva o que achou sobre o jogo aqui!"></textarea>
+
+                <h2>Feedback de Usuário ao Jogo</h2>
+                <div id="user-reviews-container">
+                    </div>
+            </div>
+            <aside class="game-sidebar">
+                <div class="purchase-box">
+                    <span class="price-tag" id="game-price">$0.00</span>
+                    <button class="buy-button" id="add-to-cart-btn">Comprar</button>
+                    <i class="icon favorite-icon">❤</i>
+                </div>
+                <div class="details-box" id="game-details">
+                    </div>
+                <div class="rating-box">
+                    <strong>18</strong>
+                    <span>Violência Extrema<br>Linguagem Imprópria</span>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

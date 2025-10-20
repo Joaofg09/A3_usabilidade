@@ -498,4 +498,78 @@ if (finalizeButton) {
         });
     }
 }
+// ===================================================================
+// LÓGICA DA PÁGINA DE DETALHES DO JOGO
+// ===================================================================
+const gameTitleElement = document.getElementById('game-title');
+if (gameTitleElement) {
+    // 1. Pega o ID do jogo da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const gameId = parseInt(urlParams.get('id'));
+
+    // 2. Encontra o jogo no nosso "banco de dados"
+    const gameData = gamesDB.find(game => game.id === gameId);
+
+    if (gameData) {
+        // 3. Preenche a página com os dados do jogo
+        document.title = `${gameData.name} - NextLevel`; // Atualiza o título da aba
+        gameTitleElement.textContent = gameData.name;
+        document.getElementById('game-hero').style.backgroundImage = `url(${gameData.heroImage})`;
+        document.getElementById('game-description').textContent = gameData.description;
+        document.getElementById('game-price').textContent = `$${gameData.price.toFixed(2)}`;
+
+        // Preenche os requisitos de sistema
+        const minReqsList = document.getElementById('min-reqs');
+        const recReqsList = document.getElementById('rec-reqs');
+        minReqsList.innerHTML = Object.entries(gameData.system_reqs.min).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('');
+        recReqsList.innerHTML = Object.entries(gameData.system_reqs.rec).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('');
+
+        // Preenche os detalhes (desenvolvedor, etc.)
+        const detailsBox = document.getElementById('game-details');
+        detailsBox.innerHTML = Object.entries(gameData.details).map(([key, value]) => `<p><strong>${key}:</strong> ${value}</p>`).join('');
+
+        // Preenche os comentários de usuários
+        const reviewsContainer = document.getElementById('user-reviews-container');
+        reviewsContainer.innerHTML = gameData.reviews.map(review => `
+            <div class="user-review-card">
+                <div class="review-header">
+                    <strong>${review.user}</strong>
+                    <div class="stars">
+                        ${'★'.repeat(review.rating)}<span class="unfilled">${'☆'.repeat(5 - review.rating)}</span>
+                    </div>
+                </div>
+                <p>"${review.comment}"</p>
+                <div class="review-actions">
+                    <i>👍 ${review.likes}</i> 
+                    <i>👎 ${review.dislikes}</i>
+                </div>
+            </div>
+        `).join('');
+
+        // 4. Lógica do botão "Comprar" (Adicionar ao Carrinho)
+        const addToCartButton = document.getElementById('add-to-cart-btn');
+        addToCartButton.addEventListener('click', () => {
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            
+            // Verifica se o item já está no carrinho
+            if (cart.some(item => item.id === gameData.id)) {
+                alert(`${gameData.name} já está no seu carrinho!`);
+            } else {
+                // Adiciona o item ao carrinho
+                cart.push({
+                    id: gameData.id,
+                    nome: gameData.name,
+                    preco: gameData.price,
+                    imagem: 'https://via.placeholder.com/100x50/888/FFFFFF?text=Game' // Imagem genérica para o carrinho
+                });
+                localStorage.setItem('shoppingCart', JSON.stringify(cart));
+                alert(`${gameData.name} foi adicionado ao carrinho!`);
+            }
+        });
+
+    } else {
+        // Se o ID do jogo não for encontrado
+        document.querySelector('.main-container').innerHTML = '<h1>Jogo não encontrado!</h1>';
+    }
+}
 });
