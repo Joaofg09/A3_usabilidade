@@ -209,16 +209,14 @@ if (cadastroForm) {
     });
 }
 
-    // ===================================================================
-// LÓGICA DE RENDERIZAÇÃO DO CABEÇALHO (SÓ EXECUTA NA PÁGINA PRINCIPAL)
+ // ===================================================================
+// NOVA LÓGICA DE RENDERIZAÇÃO DO CABEÇALHO (COM CLIQUE)
 // ===================================================================
 const userSection = document.getElementById('user-section');
 if (userSection) {
-
-    // Tenta pegar o usuário salvo no localStorage
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    // Se não houver usuário logado
+    // SE NÃO HOUVER USUÁRIO LOGADO
     if (!currentUser) {
         userSection.innerHTML = `
             <a href="login.html">Iniciar Sessão</a>
@@ -226,73 +224,110 @@ if (userSection) {
             <i class="icon">❤</i>
             <i class="icon theme-toggle" id="theme-toggle">☼</i>
         `;
-    } else {
-        // Se houver um usuário logado
+    } 
+    // SE HOUVER USUÁRIO LOGADO
+    else {
+        let finalHTML = '';
 
-        let dropdownMenuHTML = '';
-
-        // Monta o menu dropdown de acordo com a ROLE do usuário
+        // Se for ADMIN, cria DOIS menus
         if (currentUser.role === 'admin') {
-            dropdownMenuHTML = `
-                <div class="profile-dropdown">
-                    <ul>
-                        <li><a href="#">Gerenciamento de Jogos</a></li>
-                        <li><a href="#">Gerenciamento de Empresas</a></li>
-                        <li><a href="#">Gerenciamento de Usuário</a></li>
-                        <li><a href="#">Gerenciamento de Vendas e Chaves</a></li>
-                        <li><a href="#">Moderação de Avaliações</a></li>
-                    </ul>
-                </div>
-            `;
-            userSection.innerHTML = `
-                <div class="user-profile">
+            finalHTML = `
+                <div class="menu-trigger" id="admin-menu-trigger">
                     <span>Painel Admin</span>
-                    <i class="icon">👤</i>
-                    ${dropdownMenuHTML}
+                    <div class="profile-dropdown" id="admin-menu-dropdown">
+                        <ul>
+                            <li><a href="#">Gerenciamento de Jogos</a></li>
+                            <li><a href="#">Gerenciamento de Empresas</a></li>
+                            <li><a href="#">Gerenciamento de Usuário</a></li>
+                            <li><a href="#">Gerenciamento de Vendas</a></li>
+                            <li><a href="#">Moderação de Avaliações</a></li>
+                        </ul>
+                    </div>
                 </div>
+
+                <div class="menu-trigger" id="user-menu-trigger">
+                    <i class="icon">👤</i>
+                    <div class="profile-dropdown" id="user-menu-dropdown">
+                        <ul>
+                            <li><a href="#">Minha Biblioteca</a></li>
+                            <li><a href="#">Histórico de Compras</a></li>
+                            <li><a href="#">Lista de Desejos</a></li>
+                            <li><a href="#">Meus Dados</a></li>
+                            <li><a href="#" id="logout-button">Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+
                 <i class="icon">🛒</i>
                 <i class="icon">❤</i>
                 <i class="icon theme-toggle" id="theme-toggle">☼</i>
             `;
-        } else { // Se for 'user'
-            dropdownMenuHTML = `
-                <div class="profile-dropdown">
-                    <ul>
-                        <li><a href="#">Minha Biblioteca</a></li>
-                        <li><a href="#">Histórico de Compras</a></li>
-                        <li><a href="#">Lista de Desejos</a></li>
-                        <li><a href="#">Meus Dados</a></li>
-                        <li><a href="#" id="logout-button">Sair</a></li>
-                    </ul>
-                </div>
-            `;
-             userSection.innerHTML = `
-                <div class="user-profile">
+        } 
+        // Se for USUÁRIO COMUM, cria SÓ UM menu
+        else {
+            finalHTML = `
+                 <div class="menu-trigger" id="user-menu-trigger">
                     <i class="icon">👤</i>
-                    ${dropdownMenuHTML}
+                    <div class="profile-dropdown" id="user-menu-dropdown">
+                        <ul>
+                            <li><a href="#">Minha Biblioteca</a></li>
+                            <li><a href="#">Histórico de Compras</a></li>
+                            <li><a href="#">Lista de Desejos</a></li>
+                            <li><a href="#">Meus Dados</a></li>
+                            <li><a href="#" id="logout-button">Sair</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <i class="icon">🛒</i>
                 <i class="icon">❤</i>
                 <i class="icon theme-toggle" id="theme-toggle">☼</i>
             `;
         }
+        userSection.innerHTML = finalHTML;
     }
 
-    // --- Lógica de Logout ---
+    // --- LÓGICA PARA CONTROLAR OS MENUS COM CLIQUE ---
+    const allTriggers = document.querySelectorAll('.menu-trigger');
+
+    allTriggers.forEach(trigger => {
+        const dropdown = trigger.querySelector('.profile-dropdown');
+        if (dropdown) {
+            trigger.addEventListener('click', (event) => {
+                // Impede que o clique no trigger feche o menu imediatamente
+                event.stopPropagation();
+                
+                // Fecha outros menus que possam estar abertos
+                document.querySelectorAll('.profile-dropdown.show').forEach(openDropdown => {
+                    if (openDropdown !== dropdown) {
+                        openDropdown.classList.remove('show');
+                    }
+                });
+
+                // Alterna a classe 'show' do menu clicado
+                dropdown.classList.toggle('show');
+            });
+        }
+    });
+
+    // --- Lógica para fechar o menu ao clicar fora ---
+    window.addEventListener('click', () => {
+        document.querySelectorAll('.profile-dropdown.show').forEach(openDropdown => {
+            openDropdown.classList.remove('show');
+        });
+    });
+
+
+    // --- Lógica de Logout (permanece a mesma) ---
     const logoutButton = document.getElementById('logout-button');
     if (logoutButton) {
         logoutButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Previne que o link '#' mude a URL
-            
-            // Remove o usuário do localStorage
+            event.preventDefault();
             localStorage.removeItem('currentUser');
-            
-            // Recarrega a página para atualizar o cabeçalho
             window.location.reload();
         });
     }
 
-    // --- Recarrega a lógica do Theme Toggle, pois ele foi recriado ---
+    // --- Recarrega a lógica do Theme Toggle (permanece a mesma) ---
     const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
         const body = document.body;
@@ -312,4 +347,5 @@ if (userSection) {
         });
     }
 }
+
 });

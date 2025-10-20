@@ -792,7 +792,6 @@ body.login-page-body {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding-bottom: 10px; 
 }
 
 .user-profile .icon {
@@ -809,14 +808,9 @@ body.login-page-body {
     border-radius: 8px;
     width: 250px; /* Largura do menu */
     z-index: 100;
-    margin-top: 0px; /* Espaço entre o ícone e o menu */
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* Mostra o menu quando o mouse passa por cima do container .user-profile */
-.user-profile:hover .profile-dropdown {
-    display: block;
-}
 
 .profile-dropdown ul {
     list-style: none;
@@ -836,4 +830,24 @@ body.login-page-body {
 .profile-dropdown ul li a:hover {
     background-color: #e53935;
     color: #fff;
+}
+
+/* Deixa os ícones e textos clicáveis com a aparência correta */
+.menu-trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative; /* Importante para o posicionamento do menu */
+    padding: 10px 0; /* Aumenta a área de clique */
+}
+
+/* Regra para MOSTRAR o menu quando ele tiver a classe .show */
+.profile-dropdown.show {
+    display: block;
+}
+
+/* Pequeno ajuste para o posicionamento do menu dropdown */
+.profile-dropdown {
+    margin-top: 0; /* Garante que não há margem no topo */
 }
