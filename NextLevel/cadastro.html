@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta - NextLevel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page-body"> <div class="login-container">
+        <div class="login-wrapper">
+            <div class="header">
+                <h2>Criando Uma Conta!</h2>
+                <a href="login.html" class="back-button">&lt; Voltar</a>
+            </div>
+
+            <div class="cadastro-box"> <form class="cadastro-form" action="#">
+                    <div class="input-group">
+                        <label for="email">Informe seu E-mail</label>
+                        <input type="email" id="email" placeholder="Digite aqui.">
+                    </div>
+                    <div class="input-group">
+                        <label for="fullname">Nome Completo.</label>
+                        <input type="text" id="fullname" placeholder="Digite aqui.">
+                    </div>
+
+                    <label>Data de Nascimento.</label>
+                    <div class="dob-group">
+                        <select id="dob-day">
+                            <option value="">Dia</option>
+                            </select>
+                        <select id="dob-month">
+                            <option value="">Mês</option>
+                            <option value="1">Janeiro</option>
+                            <option value="2">Fevereiro</option>
+                            <option value="3">Março</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Maio</option>
+                            <option value="6">Junho</option>
+                            <option value="7">Julho</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Setembro</option>
+                            <option value="10">Outubro</option>
+                            <option value="11">Novembro</option>
+                            <option value="12">Dezembro</option>
+                        </select>
+                        <input type="text" id="dob-year" placeholder="Ano">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Senha.</label>
+                        <input type="password" id="password" placeholder="Digite aqui.">
+                        <p class="password-hint">Sua senha precisa ter um mínimo de 8 dígitos 1 caracter (@, #, $, &,*), uma letra maiúscula e uma minúscula.</p>
+                    </div>
+
+                    <button type="submit" class="login-button">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

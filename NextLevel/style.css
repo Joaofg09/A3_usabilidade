@@ -1,0 +1,839 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* ---------- ESTILOS GERAIS (PÁGINA PRINCIPAL) ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #0d0d0d;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ---------- TOPO ---------- */
+header {
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #333;
+    transition: background-color 0.3s;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.logo span {
+    color: #e53935;
+}
+
+.support {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-actions a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* ---------- MENU ---------- */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c2c2c;
+    padding: 10px 40px;
+    transition: background-color 0.3s;
+}
+
+.menu ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.search-bar input {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    width: 200px;
+    outline: none;
+}
+
+/* ---------- CARROSSEL ---------- */
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    background-color: #0d0d0d;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    width: calc((200px * 3) + (20px * 2)); /* mostra 3 cards */
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.45s cubic-bezier(.22, .9, .38, 1);
+    will-change: transform;
+}
+
+.card {
+    min-width: 200px;
+    height: 140px;
+    background: linear-gradient(180deg, #b22222, #600000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.arrow {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 5;
+    padding: 8px;
+    transition: color 0.3s;
+}
+
+.arrow[disabled] {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.dots {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background: #e53935;
+    transform: scale(1.3);
+}
+
+@media (max-width: 700px) {
+    .carousel-viewport {
+        width: 200px; /* mostra 1 card em telas pequenas */
+    }
+}
+
+/* ---------- SEÇÕES ---------- */
+.section {
+    padding: 30px 60px;
+}
+
+.section h2 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+/* ---------- LIGHT MODE ---------- */
+body.light-mode {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.light-mode header {
+    background-color: #fff;
+    border-bottom: 2px solid #ddd;
+    color: #333;
+}
+
+body.light-mode .logo,
+body.light-mode .user-actions a,
+body.light-mode .icon,
+body.light-mode .menu a {
+    color: #333;
+}
+
+body.light-mode .menu {
+    background-color: #eee;
+}
+
+body.light-mode .carousel {
+    background-color: #f0f0f0;
+}
+
+body.light-mode .arrow {
+    color: #333;
+}
+
+/* ================================================================
+========== ESTILOS ESPECÍFICOS PARA A PÁGINA DE LOGIN ==========
+================================================================
+*/
+
+/* Aplica o fundo escuro e centraliza o conteúdo APENAS na página de login */
+body.login-page-body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #282828;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-page-body .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    /* Reseta estilos do header da página principal */
+    background-color: transparent; 
+    border-bottom: none;
+}
+
+.login-page-body .header h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.back-button {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-button:hover {
+    color: #fff;
+}
+
+.login-box, .signup-box {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.input-group input::placeholder {
+    color: #888;
+}
+
+.login-button, .signup-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button {
+    background-color: #00AEEF;
+    color: #fff;
+}
+
+.login-button:hover {
+    background-color: #0099D4;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    color: #fff;
+}
+
+.signup-box {
+    text-align: center;
+}
+
+.signup-box h3 {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.signup-button {
+    background-color: #00AEEF;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.signup-button:hover {
+    background-color: #0099D4;
+}
+
+.signup-box p {
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.5;
+}@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* ---------- ESTILOS GERAIS (PÁGINA PRINCIPAL) ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #0d0d0d;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ---------- TOPO ---------- */
+header {
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #333;
+    transition: background-color 0.3s;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.logo span {
+    color: #e53935;
+}
+
+.support {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-actions a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* ---------- MENU ---------- */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c2c2c;
+    padding: 10px 40px;
+    transition: background-color 0.3s;
+}
+
+.menu ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.search-bar input {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    width: 200px;
+    outline: none;
+}
+
+/* ---------- CARROSSEL ---------- */
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    background-color: #0d0d0d;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    width: calc((200px * 3) + (20px * 2)); /* mostra 3 cards */
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.45s cubic-bezier(.22, .9, .38, 1);
+    will-change: transform;
+}
+
+.card {
+    min-width: 200px;
+    height: 140px;
+    background: linear-gradient(180deg, #b22222, #600000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.arrow {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 5;
+    padding: 8px;
+    transition: color 0.3s;
+}
+
+.arrow[disabled] {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.dots {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background: #e53935;
+    transform: scale(1.3);
+}
+
+@media (max-width: 700px) {
+    .carousel-viewport {
+        width: 200px; /* mostra 1 card em telas pequenas */
+    }
+}
+
+/* ---------- SEÇÕES ---------- */
+.section {
+    padding: 30px 60px;
+}
+
+.section h2 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+/* ---------- LIGHT MODE ---------- */
+body.light-mode {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.light-mode header {
+    background-color: #fff;
+    border-bottom: 2px solid #ddd;
+    color: #333;
+}
+
+body.light-mode .logo,
+body.light-mode .user-actions a,
+body.light-mode .icon,
+body.light-mode .menu a {
+    color: #333;
+}
+
+body.light-mode .menu {
+    background-color: #eee;
+}
+
+body.light-mode .carousel {
+    background-color: #f0f0f0;
+}
+
+body.light-mode .arrow {
+    color: #333;
+}
+
+/* ================================================================
+========== ESTILOS ESPECÍFICOS PARA A PÁGINA DE LOGIN ==========
+================================================================
+*/
+
+/* Aplica o fundo escuro e centraliza o conteúdo APENAS na página de login */
+body.login-page-body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #282828;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-page-body .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    /* Reseta estilos do header da página principal */
+    background-color: transparent; 
+    border-bottom: none;
+}
+
+.login-page-body .header h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.back-button {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-button:hover {
+    color: #fff;
+}
+
+.login-box, .signup-box {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.input-group input::placeholder {
+    color: #888;
+}
+
+.login-button, .signup-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button {
+    background-color: #00AEEF;
+    color: #fff;
+}
+
+.login-button:hover {
+    background-color: #0099D4;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    color: #fff;
+}
+
+.signup-box {
+    text-align: center;
+}
+
+.signup-box h3 {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.signup-button {
+    background-color: #00AEEF;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.signup-button:hover {
+    background-color: #0099D4;
+}
+
+.signup-box p {
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.5;
+}
+/* ===================================================================
+========== ESTILOS ESPECÍFICOS PARA A PÁGINA DE CADASTRO ==========
+=================================================================== */
+
+/* Reutiliza o estilo do box de login */
+.cadastro-box {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+/* Grupo para Data de Nascimento */
+.dob-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dob-group select,
+.dob-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Remove a seta padrão do select no Firefox
+.dob-group select {
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+} */
+
+/* Placeholder para o input de ano */
+.dob-group input::placeholder {
+    color: #888;
+}
+
+/* Dica da senha */
+.password-hint {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 8px;
+    line-height: 1.4;
+}
+/* ===================================================================
+========== ESTILOS PARA MENUS DE USUÁRIO LOGADO ===================
+=================================================================== */
+
+.user-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px; 
+}
+
+.user-profile .icon {
+    font-size: 1.5rem; /* Ícone de usuário um pouco maior */
+}
+
+.profile-dropdown {
+    display: none; /* O menu começa escondido */
+    position: absolute;
+    top: 100%; /* Posiciona logo abaixo do ícone */
+    right: 0;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 8px;
+    width: 250px; /* Largura do menu */
+    z-index: 100;
+    margin-top: 0px; /* Espaço entre o ícone e o menu */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* Mostra o menu quando o mouse passa por cima do container .user-profile */
+.user-profile:hover .profile-dropdown {
+    display: block;
+}
+
+.profile-dropdown ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.profile-dropdown ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-dropdown ul li a:hover {
+    background-color: #e53935;
+    color: #fff;
+}
