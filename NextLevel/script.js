@@ -220,7 +220,7 @@ if (userSection) {
     if (!currentUser) {
         userSection.innerHTML = `
             <a href="login.html">Iniciar Sessão</a>
-            <i class="icon">🛒</i>
+            <a href="carrinho.html" class="icon">🛒</a>
             <i class="icon">❤</i>
             <i class="icon theme-toggle" id="theme-toggle">☼</i>
         `;
@@ -258,7 +258,7 @@ if (userSection) {
                     </div>
                 </div>
 
-                <i class="icon">🛒</i>
+                <a href="carrinho.html" class="icon">🛒</a>
                 <i class="icon">❤</i>
                 <i class="icon theme-toggle" id="theme-toggle">☼</i>
             `;
@@ -278,7 +278,7 @@ if (userSection) {
                         </ul>
                     </div>
                 </div>
-                <i class="icon">🛒</i>
+                <a href="carrinho.html" class="icon">🛒</a>
                 <i class="icon">❤</i>
                 <i class="icon theme-toggle" id="theme-toggle">☼</i>
             `;
@@ -347,5 +347,155 @@ if (userSection) {
         });
     }
 }
+// ===================================================================
+// LÓGICA DA PÁGINA DO CARRINHO
+// ===================================================================
+const cartContainer = document.getElementById('cart-items-container');
+if (cartContainer) {
+    const subtotalElement = document.getElementById('subtotal');
+    let cartItems = JSON.parse(localStorage.getItem('shoppingCart')) || [];
 
+    const renderCart = () => {
+        cartContainer.innerHTML = ''; // Limpa o carrinho antes de renderizar
+        let subtotal = 0;
+
+        if (cartItems.length === 0) {
+            cartContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+            subtotalElement.textContent = '$0.00';
+            return;
+        }
+
+        cartItems.forEach(item => {
+            const itemHTML = `
+                <div class="cart-item" data-id="${item.id}">
+                    <img src="${item.imagem}" alt="${item.nome}">
+                    <div class="item-details">
+                        <h3>${item.nome}</h3>
+                        <span class="item-price">$${item.preco.toFixed(2)}</span>
+                    </div>
+                    <div class="item-actions">
+                        <button class="remove-btn">Remover</button>
+                    </div>
+                </div>
+            `;
+            cartContainer.innerHTML += itemHTML;
+            subtotal += item.preco;
+        });
+
+        subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+        addRemoveListeners();
+    };
+
+    const addRemoveListeners = () => {
+        const removeButtons = document.querySelectorAll('.remove-btn');
+        removeButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const itemElement = event.target.closest('.cart-item');
+                const itemId = parseInt(itemElement.dataset.id);
+                
+                // Remove o item do array
+                cartItems = cartItems.filter(item => item.id !== itemId);
+                // Atualiza o localStorage
+                localStorage.setItem('shoppingCart', JSON.stringify(cartItems));
+                // Re-renderiza o carrinho
+                renderCart();
+            });
+        });
+    };
+    
+    renderCart(); // Renderiza o carrinho ao carregar a página
+}
+// ===================================================================
+// LÓGICA DA PÁGINA DE PAGAMENTO
+// ===================================================================
+const paymentForm = document.getElementById('payment-form');
+if (paymentForm) {
+    paymentForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Impede o envio do formulário
+
+        const cardNumber = document.getElementById('card-number').value;
+        const cardName = document.getElementById('card-name').value;
+        const expiryDate = document.getElementById('expiry-date').value;
+        const cvc = document.getElementById('cvc').value;
+
+        // Validação simples (verificar se campos essenciais não estão vazios)
+        if (!cardNumber || !cardName || !expiryDate || !cvc) {
+            alert('Por favor, preencha todos os dados do cartão.');
+            return;
+        }
+
+        // Validação básica do formato do cartão (simples)
+        if (cardNumber.replace(/\s/g, '').length < 16) {
+            alert('Número de cartão inválido.');
+            return;
+        }
+
+        // SIMULAÇÃO SEGURA: NUNCA salve o número completo do cartão!
+        // Vamos salvar apenas os últimos 4 dígitos.
+        const last4digits = cardNumber.slice(-4);
+        const paymentInfo = {
+            method: 'Cartão de Crédito',
+            cardholder: cardName,
+            last4: last4digits
+        };
+
+        // Salva as informações "seguras" no localStorage para a página de revisão
+        localStorage.setItem('paymentInfo', JSON.stringify(paymentInfo));
+
+        // Redireciona para a página de revisão do pedido
+        window.location.href = 'revisar-pedido.html';
+    });
+}
+// ===================================================================
+// LÓGICA DA PÁGINA DE REVISÃO DO PEDIDO
+// ===================================================================
+const finalizeButton = document.getElementById('finalize-order-btn');
+if (finalizeButton) {
+    const cartItems = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+    const paymentInfo = JSON.parse(localStorage.getItem('paymentInfo'));
+
+    // Se não houver itens ou pagamento, redireciona de volta para o carrinho
+    if (cartItems.length === 0 || !paymentInfo) {
+        window.location.href = 'carrinho.html';
+    } else {
+        const reviewItemsList = document.getElementById('review-items-list');
+        const reviewSubtotal = document.getElementById('review-subtotal');
+        const reviewTotal = document.getElementById('review-total');
+        const reviewCardLast4 = document.getElementById('review-card-last4');
+
+        let subtotal = 0;
+        reviewItemsList.innerHTML = '';
+
+        // Renderiza a lista de itens
+        cartItems.forEach(item => {
+            reviewItemsList.innerHTML += `
+                <div class="cart-item">
+                    <img src="${item.imagem}" alt="${item.nome}">
+                    <div class="item-details">
+                        <h3>${item.nome}</h3>
+                        <span class="item-price">$${item.preco.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+            subtotal += item.preco;
+        });
+
+        // Atualiza os totais e informações de pagamento
+        reviewSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+        reviewTotal.textContent = `$${subtotal.toFixed(2)}`; // Total é o mesmo do subtotal nesta simulação
+        reviewCardLast4.textContent = paymentInfo.last4;
+
+        // Adiciona o evento ao botão de finalizar
+        finalizeButton.addEventListener('click', () => {
+            alert('Pedido finalizado com sucesso! Obrigado por comprar na NextLevel!');
+
+            // Limpa o carrinho e as informações de pagamento
+            localStorage.removeItem('shoppingCart');
+            localStorage.removeItem('paymentInfo');
+
+            // Redireciona para a página inicial
+            window.location.href = 'index.html';
+        });
+    }
+}
 });

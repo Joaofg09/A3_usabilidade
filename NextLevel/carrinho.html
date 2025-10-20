@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - NextLevel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cart-page">
+
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="logo">Next<span>Level</span></a>
+            <div class="support">Suporte</div>
+            <div class="user-actions" id="user-section">
+                </div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Mais vendidos</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar na loja">
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <h1>Meu Carrinho</h1>
+        <div class="cart-layout">
+            <div class="cart-items" id="cart-items-container">
+                </div>
+            <div class="cart-summary">
+                <h2>Subtotal: <span id="subtotal">$0.00</span></h2>
+                <a href="pagamento.html" class="checkout-button">Continuar Para Pagamento</a>
+                <div class="coupon-section">
+                    <label for="coupon">Coloque Seu Cupom Aqui!</label>
+                    <div class="coupon-input">
+                        <input type="text" id="coupon" placeholder="Cupom">
+                        <button>Aplicar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

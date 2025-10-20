@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisar Pedido - NextLevel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="review-page">
+
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="logo">Next<span>Level</span></a>
+            <div class="support">Suporte</div>
+            <div class="user-actions" id="user-section">
+                </div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Mais vendidos</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar na loja">
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <h1>Finalizar Pedido</h1>
+        <div class="cart-layout">
+            <div class="cart-items">
+                <h2>Resumo do Pedido</h2>
+                <div id="review-items-list">
+                    </div>
+            </div>
+
+            <div class="cart-summary">
+                <div class="order-total-details">
+                    <div><span>Itens</span> <span id="review-subtotal">$0.00</span></div>
+                    <div><span>Desconto</span> <span>$0.00</span></div>
+                    <div class="total-line"><strong>Total do Pedido:</strong> <strong id="review-total">$0.00</strong></div>
+                    <p class="installments-info">Em 2x de R$67.48 Sem juros</p>
+                </div>
+
+                <div class="payment-summary">
+                    <h3>Pagando com <span id="review-payment-method">Cartão</span> Final <span id="review-card-last4">0000</span></h3>
+                    <label for="installments">Selecione o Número de Parcelas:</label>
+                    <select id="installments" class="installments-select">
+                        <option value="1">1x Sem juros</option>
+                        <option value="2">2x Sem juros</option>
+                        <option value="3">3x Sem juros</option>
+                    </select>
+                </div>
+                
+                <button id="finalize-order-btn" class="checkout-button">Finalizar Pedido</button>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
