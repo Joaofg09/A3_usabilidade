@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras - NextLevel</title>
+    <title>Minha Biblioteca - NextLevel</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="cart-page">
@@ -38,24 +38,44 @@
         </nav>
     </header>
 
-    <main class="main-container">
-        <h1>Meu Carrinho</h1>
-        <div class="cart-layout">
-            <div class="cart-items" id="cart-items-container">
-                </div>
-            <div class="cart-summary">
-                <h2>Subtotal: <span id="subtotal">$0.00</span></h2>
-                <a href="revisar-pedido.html" class="checkout-button">Continuar Para Pagamento</a>
-                <div class="coupon-section">
-                    <label for="coupon">Coloque Seu Cupom Aqui!</label>
-                    <div class="coupon-input">
-                        <input type="text" id="coupon" placeholder="Cupom">
-                        <button>Aplicar</button>
-                    </div>
+    <main class="main-content-area">
+        <h1 class="page-title">Minha Biblioteca</h1>
+        
+        <div class="biblioteca-layout">
+            
+            <div class="jogos-grid-container">
+                <div class="jogos-grid" id="biblioteca-grid">
+                    <p style="text-align:center; color:#aaa;">Carregando sua biblioteca...</p>
                 </div>
             </div>
+
+            <aside class="filtro-sidebar">
+                <div class="filtro-card">
+                    <h2>Filtro</h2>
+                    
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="input-busca-biblioteca" placeholder="Pesquisar Título">
+                    </div>
+                    
+                    <div class="filtro-grupo">
+                        <h3 class="filtro-titulo">Gênero <i class="fas fa-chevron-down"></i></h3>
+                        <select id="select-genero" class="select-filter">
+                            <option value="">Todos os Gêneros</option>
+                            </select>
+                    </div>
+
+                    <div class="filtro-grupo">
+                        <h3 class="filtro-titulo">Empresa <i class="fas fa-chevron-down"></i></h3>
+                        <select id="select-empresa" class="select-filter">
+                            <option value="">Todas as Empresas</option>
+                            </select>
+                    </div>
+                </div>
+            </aside>
         </div>
     </main>
+    
     <script src="database.js"></script>
     <script src="script.js"></script>
 </body>

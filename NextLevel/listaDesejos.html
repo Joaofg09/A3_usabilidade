@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Desejos - Loja de Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="logo">Next<span>Level</span></a>
+            <div class="support">Suporte</div>
+            <div class="user-actions" id="user-section">
+            </div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li class="dropdown-menu-item">
+                    <a href="#" class="dropdown-trigger">Categorias</a>
+                    
+                    <ul class="submenu">
+                        <li><a href="index.html#rpg-section">RPG</a></li>
+                        <li><a href="#">Ação</a></li>
+                        <li><a href="#">Aventura</a></li>
+                        <li><a href="#">Tiro</a></li>
+                        <li><a href="#">Simulação</a></li>
+                        <li><a href="#">Puzzle</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mais vendidos</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar na loja">
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="wishlist-container">
+            <h1>Sua Lista De Desejos</h1>
+
+            <div class="controls-bar">
+
+                <label class="select-all-label">
+                    <input type="checkbox" id="selectAllCheckbox">
+                    Selecionar Tudo
+                </label>
+
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Procurar na lista">
+                </div>
+
+                <div class="utility-buttons">
+                    <button class="remove-all-button" id="removeAllButton">
+                        Remover Selecionados
+                    </button>
+                </div>
+            </div>
+            <div class="items-list" id="itemsList">
+                <div class="wishlist-item" data-title="Resident Evil 7: Biohazard">
+                    <input type="checkbox" class="item-checkbox">
+                    <div class="item-card-left">
+                        <p>Resident Evil 7</p>
+                        <p class="subtitle">Biohazard</p>
+                    </div>
+                    <div class="item-card-right">
+                        <p class="item-title-main">Resident Evil 7 Biohazard</p>
+                        <p class="item-price">$ 19.99</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-button add-to-cart-button">+Carrinho</button>
+                        <button class="action-button remove-item-button">Remover</button>
+                    </div>
+                </div>
+
+                <div class="wishlist-item" data-title="Minecraft">
+                    <input type="checkbox" class="item-checkbox">
+                    <div class="item-card-left">
+                        <p>Minecraft</p>
+                    </div>
+                    <div class="item-card-right">
+                        <p class="item-title-main">Minecraft</p>
+                        <p class="item-price">$ 26.95</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-button add-to-cart-button">+Carrinho</button>
+                        <button class="action-button remove-item-button">Remover</button>
+                    </div>
+                </div>
+
+                <div class="wishlist-item" data-title="The Legend of Zelda Breath of the Wild">
+                    <input type="checkbox" class="item-checkbox">
+                    <div class="item-card-left">
+                        <p>The Legend of Zelda</p>
+                        <p class="subtitle">Breath of the Wild</p>
+                    </div>
+                    <div class="item-card-right">
+                        <p class="item-title-main">The Legend of Zelda Breath of the Wild</p>
+                        <p class="item-price">$ 59.99</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-button add-to-cart-button">+Carrinho</button>
+                        <button class="action-button remove-item-button">Remover</button>
+                    </div>
+                </div>
+
+                <div class="wishlist-item" data-title="Stardew Valley">
+                    <input type="checkbox" class="item-checkbox">
+                    <div class="item-card-left">
+                        <p>Stardew Valley</p>
+                    </div>
+                    <div class="item-card-right">
+                        <p class="item-title-main">Stardew Valley</p>
+                        <p class="item-price">$ 14.99</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-button add-to-cart-button">+Carrinho</button>
+                        <button class="action-button remove-item-button">Remover</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="utils.js" type="module"></script>
+    <script src="main.js" type="module"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

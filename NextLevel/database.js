@@ -44,5 +44,36 @@ const gamesDB = [
             { user: 'ZeldaFan', rating: 5, comment: 'Obra de arte, melhor jogo que já joguei!', likes: 25, dislikes: 0 }
         ]
     },
-    
+    {
+        id: 3,
+        name: 'Call of Duty: Modern Warfare',
+        price: 59.99, 
+        description: 'Experimente a Campanha solo brutal e dramática que te coloca no centro de um conflito que afeta o equilíbrio do poder mundial. Lute ao lado de Operadores de Forças Especiais em uma variedade de operações secretas ao redor do globo, ou mergulhe no multijogador com a jogabilidade tática característica da série.',
+        heroImage: 'https://via.placeholder.com/800x300/4F4F4F/FFFFFF?text=Call+of+Duty+Modern+Warfare', // Imagem em tom cinza militar
+        system_reqs: {
+            min: {
+                os: 'Windows 10 64-Bit',
+                processor: 'Intel Core i3-4340 ou AMD FX-6300',
+                memory: '8 GB de RAM',
+                graphics: 'NVIDIA GeForce GTX 670 / GTX 1650 ou Radeon HD 7950',
+                storage: '175 GB de espaço disponível'
+            },
+            rec: {
+                os: 'Windows 10 64-Bit',
+                processor: 'Intel Core i5-2500K ou AMD Ryzen R5 1600X',
+                memory: '12 GB de RAM',
+                graphics: 'NVIDIA GeForce GTX 970 / GTX 1660 ou Radeon R9 390',
+                storage: '175 GB de espaço disponível'
+            }
+        },
+        details: {
+            developer: 'Infinity Ward',
+            publisher: 'Activision',
+            releaseDate: '25 de outubro de 2019'
+        },
+        reviews: [
+            { user: 'CoDFan', rating: 4, comment: 'O Multijogador é viciante, mas a campanha é muito curta.', likes: 45, dislikes: 5 }
+        ]
+    }
+
 ];

@@ -16,10 +16,21 @@
       </div>
     </div>
 
-    <nav class="menu">
+      <nav class="menu">
       <ul>
         <li><a href="#">Início</a></li>
-        <li><a href="#">Categorias</a></li>
+        <li class="dropdown-menu-item">
+            <a href="#" class="dropdown-trigger">Categorias</a>
+            
+            <ul class="submenu">
+                <li><a href="#rpg-section">RPG</a></li>
+                <li><a href="#">Ação</a></li>
+                <li><a href="#">Aventura</a></li>
+                <li><a href="#">Tiro</a></li>
+                <li><a href="#">Simulação</a></li>
+                <li><a href="#">Puzzle</a></li>
+            </ul>
+        </li>
         <li><a href="#">Mais vendidos</a></li>
       </ul>
       <div class="search-bar">
@@ -29,10 +40,16 @@
   </header>
 
   <main>
+
+    <section class="section-h1">
+        <h1>Recomendados da Semana</h1>
+      </section>
+
     <!-- Carrossel -->
     <section class="carousel">
+
       <button class="arrow left" aria-label="Anterior">❮</button>
-    
+      
       <div class="carousel-viewport">
         <div class="carousel-track">
           <div class="card">Horizon Zero Dawn</div>
@@ -56,7 +73,7 @@
 
      <!-- Recomendados -->
     <section class="section">
-      <h2>Recomendados da Semana</h2>
+      <h2>Melhores Jogos</h2>
       <div class="grid">
         <a href="jogo.html?id=1" class="card-link">
           <div class="card">Red Dead Redemption II</div>
@@ -80,14 +97,14 @@
       </div>
     </section>
 
-    <!-- Mundo Aberto -->
+    <!-- RPG -->
     <section class="section">
-      <h2>Mundo Aberto</h2>
+      <h2 id="rpg-section">RPG</h2>
       <div class="grid">
-        <div class="card">Portal 2</div>
-        <div class="card">Half-Life: Alyx</div>
-        <div class="card">Among Us</div>
-        <div class="card">A Lenda do Herói</div>
+        <div class="card">Cyberpunk 2077</div>
+        <div class="card">Monster Hunter: World</div>
+        <div class="card">Persona 5 Royal</div>
+        <div class="card">Horizon Zero Dawn</div>
       </div>
     </section>
   </main>

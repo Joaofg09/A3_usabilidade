@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Empresas - NextLevel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cart-page">
+
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="logo">Next<span>Level</span></a>
+            <div class="support">Suporte</div>
+            <div class="user-actions" id="user-section">
+                </div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li class="dropdown-menu-item">
+                    <a href="#" class="dropdown-trigger">Categorias</a>
+                    
+                    <ul class="submenu">
+                        <li><a href="index.html#rpg-section">RPG</a></li>
+                        <li><a href="#">Ação</a></li>
+                        <li><a href="#">Aventura</a></li>
+                        <li><a href="#">Tiro</a></li>
+                        <li><a href="#">Simulação</a></li>
+                        <li><a href="#">Puzzle</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mais vendidos</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar na loja">
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content-area">
+        <div class="admin-container">
+            
+            <h1 class="admin-section-title">Cadastrar Nova Empresa</h1>
+            <div class="cadastro-box">
+                <form id="cadastro-empresa-form">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="pais">País:</label>
+                            <input type="text" id="pais" name="pais" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="contato">Contato:</label>
+                            <input type="text" id="contato" name="contato">
+                        </div>
+                        <div class="input-group">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" id="cidade" name="cidade" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-cadastrar-empresa">Cadastrar Empresa</button>
+                    </div>
+                </form>
+            </div>
+            
+            <h1 class="admin-section-title list-title">Listar Empresas</h1>
+            
+            <div class="listagem-box">
+                
+                <div class="filter-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="input-busca-empresa" placeholder="Pesquisar Título">
+                        <div class="listagem-actions">
+                            <button type="submit" class="btn-Listar">Pesquisar</button>
+                        </div>
+                    </div>
+                    <select id="select-classificar-empresa" class="select-filter">
+                        <option value="nome-asc">Classificar por:</option>
+                        <option value="jogos-desc">Jogos (Maior)</option>
+                        <option value="pais-asc">País (A-Z)</option>
+                    </select>
+                </div>
+
+                <div class="tabela-empresas-container">
+                    <table class="tabela-empresas">
+                        <thead>
+                            <tr>
+                                <th>Nome da Empresa</th>
+                                <th>Sede (Cidade, País)</th>
+                                <th>Jogos no Catálogo</th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-corpo-empresas">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

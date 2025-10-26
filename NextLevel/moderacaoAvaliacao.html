@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - NextLevel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cart-page">
+
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="logo">Next<span>Level</span></a>
+            <div class="support">Suporte</div>
+            <div class="user-actions" id="user-section">
+                </div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li class="dropdown-menu-item">
+                    <a href="#" class="dropdown-trigger">Categorias</a>
+                    
+                    <ul class="submenu">
+                        <li><a href="index.html#rpg-section">RPG</a></li>
+                        <li><a href="#">Ação</a></li>
+                        <li><a href="#">Aventura</a></li>
+                        <li><a href="#">Tiro</a></li>
+                        <li><a href="#">Simulação</a></li>
+                        <li><a href="#">Puzzle</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mais vendidos</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar na loja">
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content-area">
+        <div class="admin-container">
+            
+            <h1 class="admin-section-title">Moderação de Avaliação</h1>
+            
+            <div class="listagem-box">
+                
+                <div class="filter-bar moderacao-filter-bar">
+                    <label for="select-jogo">Jogo:</label>
+                    <select id="select-jogo" class="select-filter">
+                        <option value="">Red Dead Redemption II</option>
+                        </select>
+
+                    <label for="select-classificar-aval">Classificar por:</label>
+                    <select id="select-classificar-aval" class="select-filter">
+                        <option value="">Mais Recente</option>
+                        <option value="mais-antiga">Mais Antiga</option>
+                        <option value="maior-nota">Maior Nota</option>
+                        <option value="menor-nota">Menor Nota</option>
+                    </select>
+
+                    <div class="search-input-group search-review">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="input-busca-conteudo" placeholder="Pesquisar Conteúdo">
+                    </div>
+                </div>
+
+                <div class="tabela-moderação-container">
+                    <table class="tabela-moderação">
+                        <thead>
+                            <tr>
+                                <th style="width:15%">Nome do Jogo</th>
+                                <th style="width:10%">Usuário</th>
+                                <th style="width:10%">Nota</th>
+                                <th style="width:45%">Comentário</th>
+                                <th style="width:10%">Aprovar</th>
+                                <th style="width:10%">Remover</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-corpo-avaliacoes">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
