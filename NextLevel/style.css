@@ -94,6 +94,63 @@ header {
     outline: none;
 }
 
+/* ------------- CATEGORIA DO MENU --------------*/
+
+/* 1. CONTAINER PRINCIPAL DO DROPDOWN */
+.dropdown-menu-item {
+    position: relative; 
+    /* ... (outras regras) ... */
+}
+
+/* 2. O SUBMENU (Oculto por padrão) */
+.submenu {
+    /* REGRA CRÍTICA PARA ESCONDER: USANDO !IMPORTANT PARA SOBRESCREVER CONFLITOS */
+    display: none !important; 
+    
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #3a3a3a;
+    min-width: 180px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    z-index: 20;
+    padding: 0; 
+    margin: 0; /* Garante que não haja margem externa */
+}
+
+/* 3. EFEITO HOVER (A MAGIA!) */
+.dropdown-menu-item:hover .submenu {
+    /* QUANDO PASSA O MOUSE, FORÇA A EXIBIÇÃO VERTICAL */
+    display: block !important; 
+}
+
+/* 4. GARANTIA: Faz com que os itens do submenu fiquem empilhados verticalmente quando visível */
+.submenu li {
+    display: block; 
+    border-bottom: 1px solid #444; 
+}
+.submenu li:last-child {
+    border-bottom: none;
+}
+.submenu a {
+    padding: 10px 15px;
+    display: block; /* Garante que o link ocupe toda a largura */
+    white-space: nowrap; 
+}
+
+
+/* 3. EFEITO HOVER (A MAGIA!) */
+.dropdown-menu-item:hover .submenu {
+    /* Quando o mouse passa, o submenu aparece em formato vertical */
+    display: block; 
+}
+
+.submenu a:hover {
+    background-color: #e53935; /* Cor de destaque (Vermelho/Bordô) no hover */
+    color: #fff;
+}
+
 /* ---------- CARROSSEL ---------- */
 .carousel {
     position: relative;
@@ -1276,4 +1333,695 @@ body.login-page-body {
 .review-actions i {
     cursor: pointer;
     font-size: 1.2rem;
+}
+
+/*Estilo para a pagina de LISTA DE DESEJO
+
+/* Variáveis de Cor (Mantenha este bloco no topo do seu style.css) */
+:root {
+    --color-background-dark: #1e1e1e;
+    --color-header-dark: #222222; 
+    --color-card-dark: #333333;
+    --color-controls-bar: #4a4a4a; /* Cinza da barra de controles */
+    --color-text-light: #ffffff;
+    --color-text-faint: #b3b3b3;
+    --color-accent-red: #cc0000; /* Vermelho da capa/nome */
+    --color-button-blue: #007bff;
+    --color-hover-blue: #0056b3;
+    --color-hover-red: #a30000;
+    --color-price: #cccccc;
+    --color-search-bg: #292929;
+}
+
+/* Certifique-se de que o main ainda tem padding-top para evitar que o header o cubra */
+/* main { padding-top: 55px; } */ 
+
+/* --- LISTA DE DESEJOS GERAL --- */
+.wishlist-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0;
+}
+
+h1 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --- BARRA DE CONTROLES (TOPO DA LISTA) --- */
+.controls-bar {
+    /* LAYOUT: Alinha todos os elementos em uma ÚNICA linha horizontal (Flexbox) */
+    display: flex; 
+    align-items: center;
+    background-color: var(--color-controls-bar); 
+    padding: 10px 15px; /* Padding interno */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    gap: 15px; /* Espaço entre os elementos */
+}
+
+/* Checkbox e Label "Selecionar Tudo" */
+.select-all-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--color-text-light);
+    flex-shrink: 0; /* Não deixa encolher */
+}
+
+/* Campo de Pesquisa ("Procurar na lista") */
+.search-box {
+    flex-grow: 1; /* Ocupa a maior parte do espaço disponível */
+    position: relative;
+    max-width: 300px; 
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #666; 
+    border-radius: 3px;
+    background-color: var(--color-search-bg);
+    color: var(--color-text-light);
+    font-size: 13px;
+    outline: none;
+}
+
+.remove-all-button {
+    /* O botão aparece com fundo escuro/cinza claro e texto branco, alinhado à direita */
+    background-color: var(--color-controls-bar);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0,2;
+}
+
+.remove-all-button:hover {
+    background-color: var(--color-hover-red); 
+}
+
+/* Customização do Checkbox (Square Look) */
+input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--color-text-faint); 
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: var(--color-controls-bar); /* Fundo igual ao da barra de controle */
+    position: relative;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+input[type="checkbox"]:checked::before {
+    /* O ponto/círculo de marcação */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-text-light);
+    border-radius: 50%; /* Faz um círculo */
+}
+
+
+/* --- ESTILO DOS ITENS DA LISTA --- */
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-card-dark); /* #333333 */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    gap: 20px; 
+}
+
+/* Container Vermelho (Capa/Nome Esquerdo) */
+.item-card-left {
+    /* Reintroduz a caixa vermelha de capa/nome */
+    width: 180px; /* Largura ajustada para o protótipo */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    background-color: var(--color-accent-red); /* Vermelho */
+    padding: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+/* Se houver texto diretamente em <p> dentro de item-card-left */
+.item-card-left p {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--color-text-light);
+}
+
+/* Estrutura do Meio (Nome, Preço) */
+.item-card-right {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.item-title-main {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    color: var(--color-text-light);
+}
+
+.item-price {
+    font-size: 14px; 
+    font-weight: normal; /* Sem negrito para o preço, como no protótipo */
+    color: var(--color-text-faint); /* Cor mais sutil para o preço */
+    margin: 0;
+}
+
+/* Ações (Botões Carrinho e Remover) */
+.item-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 90px; /* Largura dos botões */
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.action-button {
+    padding: 6px 10px; 
+    font-size: 13px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-button {
+    background-color: var(--color-button-blue);
+    color: var(--color-text-light);
+}
+
+.add-to-cart-button:hover {
+    background-color: var(--color-hover-blue);
+}
+
+.remove-item-button {
+    background-color: var(--color-controls-bar);
+    color: var(--color-text-light);
+}
+
+.remove-item-button:hover {
+    background-color: var(--color-hover-red);
+}
+
+/* Codigo CSS para a parte de Gerenciamento de Jogos
+
+/* 1. VARIÁVEIS DE COR (A SEREM USADAS NAS SUAS VARIÁVEIS GERAIS) */
+:root {
+    --cor-fundo-principal: #282828; /* Fundo principal escuro */
+    --cor-fundo-admin-box: #333333; /* Fundo dos cards do admin */
+    --cor-input-admin: #1a1a1a; /* Fundo dos campos de input */
+    --cor-borda-admin: #555555; /* Borda da tabela/inputs */
+    
+    --cor-acao-sucesso: #39FF14; /* Verde Neon (Cadastrar, Preço) */
+    --cor-acao-manutencao: #ffffff; /* Branco (Editar, Borda Ativa) */
+    --cor-acao-perigo: #ff3914; /* Vermelho (Excluir) */
+}
+
+/* CONTAINER GERAL DO ADMIN */
+.main-content-area {
+    max-width: 1100px;
+    margin: 40px auto;
+}
+.admin-section-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--cor-texto-principal);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.list-title {
+    margin-top: 40px; /* Mais espaço para separar Listar de Cadastrar */
+}
+
+/* 2. ESTILOS DO FORMULÁRIO DE CADASTRO */
+.cadastro-box {
+    background-color: var(--cor-fundo-admin-box);
+    padding: 30px;
+    border-radius: 8px;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.input-group {
+    margin-bottom: 10px;
+}
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--cor-input-admin);
+    border: 1px solid var(--cor-borda-admin);
+    border-radius: 4px;
+    color: var(--cor-texto-principal);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+/* Destacar campo ativo (Branco) */
+.input-group input:focus, .input-group textarea:focus, .input-group select:focus {
+    border-color: var(--cor-acao-manutencao);
+}
+
+.input-group.full-width {
+    grid-column: span 2;
+}
+.input-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Estilo do Preço (Input com o cifrão) */
+.preco-group {
+    position: relative;
+}
+.preco-group input {
+    padding-left: 20px; /* Espaço para o cifrão */
+}
+.currency-symbol {
+    position: absolute;
+    top: 36px; /* Ajuste vertical */
+    left: 8px;
+    color: var(--cor-texto-secundario);
+}
+/* Botão Cadastrar */
+.btn-cadastrar {
+    background-color: var(--cor-acao-sucesso); /* Verde Neon */
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-top: -10px; /* Puxa o botão para a área do formulário */
+}
+.btn-cadastrar:hover {
+    filter: brightness(1.1);
+}
+
+/* 3. ESTILOS DA TABELA DE LISTAGEM */
+.listagem-box {
+    background-color: var(--cor-fundo-admin-box);
+    padding: 20px;
+    border-radius: 8px;
+}
+.filter-bar {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.search-input-group {
+    position: relative;
+    flex-grow: 1;
+}
+.search-input-group input {
+    padding-left: 35px;
+}
+.search-input-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cor-texto-secundario);
+}
+.select-filter {
+    padding: 10px;
+    background-color: var(--cor-input-admin);
+    border: 1px solid var(--cor-borda-admin);
+    color: var(--cor-texto-principal);
+    border-radius: 4px;
+}
+
+/* Estilo da Tabela */
+.tabela-jogos {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaçamento entre células */
+}
+.tabela-jogos thead th {
+    background-color: var(--cor-input-admin);
+    color: var(--cor-texto-principal);
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--cor-borda-admin);
+    font-weight: bold;
+}
+.tabela-jogos tbody td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #444;
+    color: var(--cor-texto-principal);
+    font-size: 0.95em;
+}
+
+/* Estilização da Coluna de Preço */
+.preco-tabela {
+    color: var(--cor-acao-sucesso); /* Verde Neon */
+    font-weight: bold;
+}
+
+/* Estilização dos Ícones de Ação (Manutenção e Perigo) */
+.tabela-jogos .action-icon {
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.icon-edit {
+    color: var(--cor-acao-manutencao); /* Branco para Editar */
+    margin-right: 15px;
+}
+.icon-delete {
+    color: var(--cor-acao-perigo); /* Vermelho para Excluir */
+}
+
+.icon-edit:hover {
+    filter: brightness(1.2);
+}
+.icon-delete:hover {
+    filter: brightness(0.8);
+}
+
+/* -------------------------------------------------------------------
+---------Estilização da tela de Gerenciamento de Empresas-------------
+---------------------------------------------------------------------/*
+
+/* REGRAS EXISTENTES: */
+/* .admin-section-title, .cadastro-box, .form-grid, .input-group, 
+.btn-cadastrar (Mudar a cor do botão específico), .listagem-box,
+.filter-bar, .search-input-group, .tabela-jogos (Reutilizar para tabela-empresas) */
+
+/* ESTILOS NOVOS/AJUSTADOS (Adicione ao seu style.css): */
+
+/* Botão de Cadastro de Empresa (Usando a cor de Sucesso - Verde Neon) */
+.btn-cadastrar-empresa {
+    background-color: var(--cor-acao-sucesso); 
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-top: -10px; /* Alinha no topo do box */
+}
+.btn-cadastrar-empresa:hover {
+    filter: brightness(1.1);
+}
+
+/* Estilo para a Tabela de Empresas (Reutiliza as classes da tabela de jogos) */
+.tabela-empresas {
+    width: 100%;
+    border-collapse: collapse;
+    /* Estilos de bordas, cores de fundo etc. serão herdados das classes .tabela-jogos */
+}
+.tabela-empresas thead th {
+    /* Mesmo estilo de thead de .tabela-jogos */
+    background-color: var(--cor-input-admin);
+    color: var(--cor-texto-principal);
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--cor-borda-admin);
+    font-weight: bold;
+}
+.tabela-empresas tbody td {
+    /* Mesmo estilo de tbody td de .tabela-jogos */
+    padding: 12px 10px;
+    border-bottom: 1px solid #444;
+}
+
+/* Estilização da Coluna de Jogos no Catálogo */
+.jogos-catalogo {
+    color: var(--cor-acao-manutencao); /* Ciano para destaque do número */
+    font-weight: bold;
+}
+
+/* ----------------------------------------------------------------------------------
+-----------------Css para pagina de Moderação e Avaliação do jogo--------------------
+-----------------------------------------------------------------------------------/*
+
+/* Reutiliza a maioria das classes de .tabela-jogos */
+
+/* ESTILOS ESPECÍFICOS PARA MODERAÇÃO (Adicione ao seu style.css) */
+
+.moderacao-filter-bar {
+    /* Ajuste para alinhar os elementos de filtro */
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-review {
+    flex-grow: 1; /* Ocupa o espaço restante */
+}
+
+/* Estilo da Tabela de Moderação */
+.tabela-moderação {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-moderação thead th {
+    /* Herda o fundo escuro do thead das outras tabelas */
+    background-color: var(--cor-input-admin);
+    color: var(--cor-texto-principal);
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--cor-borda-admin);
+    font-weight: bold;
+}
+
+.tabela-moderação tbody td {
+    padding: 15px 10px; /* Mais espaço para o comentário */
+    border-bottom: 1px solid #444;
+    color: var(--cor-texto-principal);
+    font-size: 0.95em;
+    vertical-align: top; /* Alinha o conteúdo ao topo */
+}
+
+/* Estilo para a Nota (Estrelas) */
+.rating-stars {
+    font-size: 1.4em; /* Tamanho das estrelas */
+    color: gold; /* Cor das estrelas preenchidas */
+    letter-spacing: -2px; /* Reduz o espaço entre as estrelas */
+}
+.rating-stars .unfilled {
+    color: var(--cor-borda-admin); /* Estrelas não preenchidas em cinza */
+}
+
+/* Estilo para os Ícones de Ação (Aprovar/Remover) */
+.moderacao-action-icon {
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: block; /* Garante que o ícone ocupe a célula sozinho */
+    text-align: center;
+}
+.icon-aprovar {
+    color: var(--cor-acao-sucesso); /* Verde Neon para Aprovar */
+}
+.icon-remover {
+    color: var(--cor-acao-perigo); /* Vermelho para Remover */
+}
+
+.icon-aprovar:hover {
+    filter: brightness(1.2);
+}
+.icon-remover:hover {
+    filter: brightness(0.8);
+}
+
+/* ----------------------------------------------------------------------------------
+----------------------Css para pagina de Minha Biblioteca----------------------------
+-----------------------------------------------------------------------------------/*
+
+/* REGRAS EXISTENTES: 
+    --cor-fundo-principal, --cor-bordo-gradiente, etc.
+    .main-content-area, .page-title 
+*/
+
+/* 1. LAYOUT PRINCIPAL DA BIBLIOTECA */
+.biblioteca-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.jogos-grid-container {
+    flex-grow: 1;
+}
+
+/* O GRID ONDE OS JOGOS FICAM */
+.jogos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 3 a 4 colunas */
+    gap: 20px;
+}
+
+/* 2. CARD INDIVIDUAL (ESTILO BORDÔ) */
+.jogo-card {
+    background: var(--cor-bordo-gradiente);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 220px; /* Altura fixa para todos os cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Conteúdo no fundo */
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.jogo-card h2 {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: var(--cor-texto-principal);
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* 3. BOTÕES DE STATUS (JOGAR / INSTALAR) */
+.status-actions {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+    z-index: 10;
+}
+
+.btn-biblioteca {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Botão JOGAR (Cor de Ação Principal - Azul/Ciano) */
+.btn-jogar {
+    background-color: var(--cor-acao-manutencao); /* Ciano */
+    color: #000;
+}
+.btn-jogar:hover {
+    background-color: var(--cor-acao-sucesso); /* Verde Neon no hover */
+    color: #000;
+}
+
+/* Botão INSTALAR (Cor Secundária/Neutro - Branco/Cinza) */
+.btn-instalar {
+    background-color: #555;
+    color: var(--cor-texto-principal);
+}
+.btn-instalar:hover {
+    background-color: #666;
+}
+
+/* Botão DESINSTALAR (Cor de Perigo - Vermelho) */
+.btn-desinstalar {
+    background-color: var(--cor-acao-perigo);
+    color: var(--cor-texto-principal);
+}
+.btn-desinstalar:hover {
+    background-color: #c0392b;
+}
+
+/* 4. PAINEL LATERAL DE FILTRO */
+.filtro-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+}
+.filtro-card {
+    background-color: var(--cor-fundo-secao);
+    padding: 20px;
+    border-radius: 8px;
+    position: sticky;
+    top: 20px; /* Mantém o filtro visível ao rolar */
+}
+.filtro-card h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #555;
+    padding-bottom: 10px;
+}
+.filtro-grupo {
+    margin-bottom: 15px;
+}
+.filtro-titulo {
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--cor-texto-secundario);
+}
+.select-filter {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--cor-input-admin);
+    border: 1px solid var(--cor-borda-admin);
+    color: var(--cor-texto-principal);
+    border-radius: 4px;
+}
+
+/* Estilo do input de busca no filtro */
+.search-input-group {
+    background-color: var(--cor-input-admin);
+    border-radius: 4px;
+    border: 1px solid var(--cor-borda-admin);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 15px;
+}
+.search-input-group input {
+    border: none;
+    background: none;
+    color: var(--cor-texto-principal);
+    padding: 8px 0;
+    width: 100%;
+    outline: none;
+}
+.search-input-group i {
+    color: var(--cor-texto-secundario);
+    margin-right: 5px;
 }

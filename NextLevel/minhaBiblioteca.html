@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - NextLevel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cart-page">
+
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="logo">Next<span>Level</span></a>
+            <div class="support">Suporte</div>
+            <div class="user-actions" id="user-section">
+                </div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Mais vendidos</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar na loja">
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content-area">
+        <h1 class="page-title">Minha Biblioteca</h1>
+        
+        <div class="biblioteca-layout">
+            
+            <div class="jogos-grid-container">
+                <div class="jogos-grid" id="biblioteca-grid">
+                    <p style="text-align:center; color:#aaa;">Carregando sua biblioteca...</p>
+                </div>
+            </div>
+
+            <aside class="filtro-sidebar">
+                <div class="filtro-card">
+                    <h2>Filtro</h2>
+                    
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="input-busca-biblioteca" placeholder="Pesquisar Título">
+                    </div>
+                    
+                    <div class="filtro-grupo">
+                        <h3 class="filtro-titulo">Gênero <i class="fas fa-chevron-down"></i></h3>
+                        <select id="select-genero" class="select-filter">
+                            <option value="">Todos os Gêneros</option>
+                            </select>
+                    </div>
+
+                    <div class="filtro-grupo">
+                        <h3 class="filtro-titulo">Empresa <i class="fas fa-chevron-down"></i></h3>
+                        <select id="select-empresa" class="select-filter">
+                            <option value="">Todas as Empresas</option>
+                            </select>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
