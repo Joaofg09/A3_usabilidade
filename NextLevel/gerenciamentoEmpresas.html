@@ -18,7 +18,18 @@
         <nav class="menu">
             <ul>
                 <li><a href="index.html">Início</a></li>
-                <li><a href="#">Categorias</a></li>
+                <li class="dropdown-menu-item">
+                    <a href="#" class="dropdown-trigger">Categorias</a>
+                    
+                    <ul class="submenu">
+                        <li><a href="index.html#rpg-section">RPG</a></li>
+                        <li><a href="#">Ação</a></li>
+                        <li><a href="#">Aventura</a></li>
+                        <li><a href="#">Tiro</a></li>
+                        <li><a href="#">Simulação</a></li>
+                        <li><a href="#">Puzzle</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">Mais vendidos</a></li>
             </ul>
             <div class="search-bar">
@@ -66,6 +77,9 @@
                     <div class="search-input-group">
                         <i class="fas fa-search"></i>
                         <input type="text" id="input-busca-empresa" placeholder="Pesquisar Título">
+                        <div class="listagem-actions">
+                            <button type="submit" class="btn-Listar">Pesquisar</button>
+                        </div>
                     </div>
                     <select id="select-classificar-empresa" class="select-filter">
                         <option value="nome-asc">Classificar por:</option>
