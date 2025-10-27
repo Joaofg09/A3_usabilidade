@@ -163,7 +163,7 @@ header {
 
 .carousel-viewport {
     overflow: hidden;
-    width: calc((200px * 3) + (20px * 2)); /* mostra 3 cards */
+    width: calc((350px * 3) + (20px * 2)); /* mostra 3 cards */
 }
 
 .carousel-track {
@@ -174,8 +174,8 @@ header {
 }
 
 .card {
-    min-width: 200px;
-    height: 140px;
+    min-width: 350px;
+    height: 400px;
     background: linear-gradient(180deg, #b22222, #600000);
     display: flex;
     justify-content: center;
